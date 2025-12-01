@@ -1,0 +1,65 @@
+/* src/index.css — вставь полностью, импортируй в main.tsx */
+:root, html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #222 !important;        /* жёсткий чёрный фон */
+  color: #fff !important;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Убиваем возможные outline / border у body у браузера */
+body {
+  background-color: #000 !important;
+  overflow: hidden; /* временно: убирает скроллбар при отладке; можно убрать позже */
+}
+
+/* Основной react-контейнер чтобы точно растягивался */
+#root {
+  min-height: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #222 !important;
+}
+
+/* Убираем возможные белые рамки у контейнеров */
+* {
+  box-sizing: border-box;
+}
+
+/* Убираем любые фоны у псевдоэлементов (иногда темы используют ::before/::after) */
+*::before, *::after {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Если библиотека использует CSS-переменные — переопределяем ключевые */
+:root {
+  --tgui--bg_color: #222222 !important;
+  --tgui--secondary_bg_color: #222222 !important;
+  --tgui--tertiary_bg_color: #222222 !important;
+
+  --tgui--text_color: #ffffff !important;
+}
+
+/* Если есть глобальные контейнеры, которые имеют margin */
+.app-container, .app-content, .tabbar-wrapper {
+  background: #222 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Временная рамка для отладки: покажет по какому элементу остаётся светлый краешек */
+/* Убери или закомментируй border-debug когда всё заработает */
+.border-debug {
+  outline: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* Убираем возможную белую полосу от scrollbar gutter */
+html {
+  scrollbar-gutter: stable both-edges;
+}
